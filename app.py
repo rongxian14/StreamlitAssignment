@@ -149,6 +149,9 @@ input_type = st.sidebar.radio('Input Type', ['Uniprot ID', 'Protein Sequence'])
 
 if input_type == 'Uniprot ID':
     uniprot_id = st.sidebar.text_input('Enter Uniprot ID')
+    if uniprot_id == '':
+        st.error('Please enter a Uniprot ID, such as P00533')
+    
     if st.sidebar.button('Fetch Protein Data'):
         # Retrieve protein data using Uniprot ID
         protein_data = retSeq(uniprot_id)
@@ -179,6 +182,8 @@ if input_type == 'Uniprot ID':
 
 elif input_type == 'Protein Sequence':
     protein_sequence = st.sidebar.text_area('Enter Protein Sequence')
+    if protein_sequence == '':
+        st.error('Please enter a protein sequence, such as MGLALLLLAVLGATATEQSSLCAQVHGQICCTHGGCSGTSIQCLPCHSQCAAGCTGPKIPSIATGMVGALLLLLVVALGIGLFMRRRHIVRKRTLRRLLQERELVEPLTPSGEAPNQALLRILKETEAYVMASVDNPHVCRLLGICLTSTVQLITQLMPFGCLLDYVREHKDNIGSQYCVLSHNVVKHERCEQTKNGQGCKYVNENKSWHCPPICYVALLNKDGKVCINADGRYEKMSKCGAPDCVKTQVCANRCSGRCWGGCVRQCIQFAYELAECCQPELLPLGQKANKEALQKCEE')
     if st.sidebar.button('Analyze Sequence'):
     # To anayse sequences:
         # 1. Categorization (natively folded vs. natively unfolded) according to mean hydrophobicity
@@ -187,10 +192,4 @@ elif input_type == 'Protein Sequence':
         # 2. Secondary structure prediction
         st.subheader(f"Plotting the hydrophobicity profile of the protein...")
         plot_hydrophobicity_profile(protein_sequence.upper(), 5)
-
-else:
-    st.write("Invalid input.")
-    st.write("For Uniprot ID, enter a valid Uniprot ID format such as <P00533>.")
-    st.write("For protein sequence, enter a valid protein sequence such as <MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSHGSAQVKGHGKKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTPAVHASLDKFLASVSTVLTSKYR>.")
     
-        
