@@ -187,4 +187,10 @@ elif input_type == 'Protein Sequence':
         # 2. Secondary structure prediction
         st.subheader(f"Plotting the hydrophobicity profile of the protein...")
         plot_hydrophobicity_profile(protein_sequence.upper(), 5)
+
+else:
+    st.write("Invalid input.")
+    st.write("For Uniprot ID, enter a valid Uniprot ID format such as <P00533>.")
+    st.write("For protein sequence, enter a valid protein sequence such as <MVLSPADKTNVKAAWGKVGAHAGEYGAEALERMFLSFPTTKTYFPHFDLSHGSAQVKGHGKKVADALTNAVAHVDDMPNALSALSDLHAHKLRVDPVNFKLLSHCLLVTLAAHLPAEFTPAVHASLDKFLASVSTVLTSKYR>.")
+    
         
